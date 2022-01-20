@@ -40,7 +40,7 @@ server.use('/api/users', usersRouter);
 
 // endpoints
 server.get('/', (req, res) => {
-	res.status(200).send('hello from LETCHAT!');
+	res.status(200).send('hello from LETCHAT :)');
 });
 
 server.get('*', (req, res, next) => {
