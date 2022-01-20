@@ -16,7 +16,7 @@ server.use(cors());
 server.use(helmet());
 
 mongoose.connect(
-	'mongodb+srv://thinguyen:1f9oGorIycfotWOC@cluster0.aiph4.mongodb.net/letchat?retryWrites=true&w=majority',
+	process.env.MONGO_URL,
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
