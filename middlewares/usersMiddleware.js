@@ -25,15 +25,15 @@ async function checkEmailExists(req, res, next) {
 }
 
 // async function checkUserExists(req, res, next) {
-//     const user = await User.findOne({ username: req.body.username })
-//     if (user) {
-//         next()
-//     } else {
-//         next({
-//             status: 404,
-//             message: 'User Not Found'
-//         })
-//     }
+// 	const user = await User.findOne({ username: req.body.username });
+// 	if (user) {
+// 		next();
+// 	} else {
+// 		next({
+// 			status: 404,
+// 			message: 'User Not Found',
+// 		});
+// 	}
 // }
 
 module.exports = {
