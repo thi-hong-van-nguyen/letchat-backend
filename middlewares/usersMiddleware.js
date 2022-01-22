@@ -24,20 +24,42 @@ async function checkEmailExists(req, res, next) {
 	}
 }
 
-// async function checkUserExists(req, res, next) {
-// 	const user = await User.findOne({ username: req.body.username });
-// 	if (user) {
-// 		next();
-// 	} else {
-// 		next({
-// 			status: 404,
-// 			message: 'User Not Found',
-// 		});
-// 	}
-// }
+async function checkAvailableUsername(req, res, next) {
+	const user = await User.findOne({ username: req.body.username });
+	if (!user) {
+		next();
+	} else {
+		if (user._id.toString() === req.params._id) {
+			next();
+		} else {
+			next({
+				status: 400,
+				message: 'Username taken',
+			});
+		}
+	}
+}
+
+async function checkAvailableEmail(req, res, next) {
+	const user = await User.findOne({ email: req.body.email });
+	if (!user) {
+		next();
+	} else {
+		if (user._id.toString() === req.params._id) {
+			next();
+		} else {
+			next({
+				status: 400,
+				message: 'Email is already in use',
+			});
+		}
+	}
+}
 
 module.exports = {
 	checkUsernameTaken,
 	checkEmailExists,
 	// checkUserExists,
+	checkAvailableUsername,
+	checkAvailableEmail,
 };

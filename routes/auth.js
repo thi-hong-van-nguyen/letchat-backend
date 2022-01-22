@@ -46,7 +46,7 @@ router.post('/login', async (req, res, next) => {
 		if (!user) {
 			next({
 				status: 404,
-				message: 'not found',
+				message: 'User not found',
 			});
 		}
 
