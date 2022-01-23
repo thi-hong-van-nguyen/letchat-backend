@@ -1,11 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
-require('dotenv').config();
-
 const authRouter = require('./routes/auth');
-const usersRouter = require('./routes/users');
+const userRouter = require('./routes/users');
+const conversationRouter = require('./routes/conversations');
+const messageRouter = require('./routes/messages');
 
 const server = express();
 const port = process.env.PORT || 5000;
@@ -50,7 +51,9 @@ server.use(function (req, res, next) {
 
 // routes
 server.use('/api/auth', authRouter);
-server.use('/api/users', usersRouter);
+server.use('/api/users', userRouter);
+server.use('/api/conversations', conversationRouter);
+server.use('/api/messages', messageRouter);
 
 // endpoints
 server.get('/', (req, res) => {

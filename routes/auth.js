@@ -65,7 +65,7 @@ router.post('/login', async (req, res, next) => {
 		} else {
 			next({
 				status: 400,
-				message: 'Wrong password',
+				message: 'Invalid password',
 			});
 		}
 	} catch (err) {
